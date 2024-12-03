@@ -18,7 +18,7 @@ const handleLogin = () => {
   <div class="hero">
     <div class="overlay">
       <div class="navbar">
-        <h1>MyFlix</h1>
+        <h1>NotFlix</h1>
         <RouterLink to="/register" class="button register">Register</RouterLink>
       </div>
       <div class="form-container">

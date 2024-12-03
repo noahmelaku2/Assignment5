@@ -4,7 +4,7 @@
   <div class="hero">
     <div class="overlay">
       <div class="navbar">
-        <h1>MyFlix</h1>
+        <h1>NotFlix</h1>
         <a href="index.html" class="button login">Login</a>
       </div>
       <div class="form-container">

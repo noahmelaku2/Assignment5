@@ -6,15 +6,15 @@ import { RouterLink } from 'vue-router';
     <div class="hero">
         <div class="overlay">
             <div class="navbar">
-                <h1>MyFlix</h1>
+                <h1>NotFlix</h1>
                 <div class="nav-buttons">
                     <RouterLink to="/register" class="button register">Register</RouterLink>
                     <RouterLink to="/login" class="button login">Login</RouterLink>
                 </div>
             </div>
             <div class="hero-content">
-                <h2>Watch Anywhere. Cancel Anytime.</h2>
-                <p>Ready to watch? Enter your email to create or restart your membership.</p>
+                <h2>Featured Movies And Shows.</h2>
+                <p>Stream your favorite movies and shows anytime, anywhere.</p>
                 <input type="email" placeholder="Email address" class="email-input">
                 <button class="button join">Get Started</button>
             </div>
