@@ -1,103 +1,68 @@
 <script setup>
-import axios from "axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import Header from "../components/Header.vue";
+import Details from "../components/Details.vue";
+import Footer from "../components/Footer.vue";
 
 const route = useRoute();
-const response = await axios.get(`https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${import.meta.env.VITE_TMDB_KEY}&append_to_response=videos`);
-console.log(response.data);
+const router = useRouter();
+const movieId = route.params.id;
+
+if (!movieId) {
+  router.push("/");
+}
 </script>
 
 <template>
-  <div class="movie-detail">
-    <h1 class="movie-title">{{ response.data.original_title }}</h1>
-    <p class="movie-overview">{{ response.data.overview }}</p>
-    <p class="movie-release-date">Release Date: {{ response.data.release_date }}</p>
-    <a class="movie-site" :href="response.data.homepage" target="_blank">Official Movie Site</a>
-    <img :src="`https://image.tmdb.org/t/p/w500${response.data.poster_path}`" alt="Movie Poster" class="movie-poster" />
-
-    <h2 class="trailers-title">Trailers</h2>
-    <div class="trailers-container">
-      <div v-for="trailer in response.data.videos.results" :key="trailer.id" class="trailer-tile">
-        <a :href="`https://www.youtube.com/watch?v=${trailer.key}`" target="_blank">
-          <img :src="`https://img.youtube.com/vi/${trailer.key}/hqdefault.jpg`" alt="Trailer"
-            class="trailer-thumbnail" />
-        </a>
-      </div>
-    </div>
+  <Header/>
+  <div class="details-view">
+    <Details :id="movieId" />
+    <button @click="router.push('/movies')">Back to Movies</button>
   </div>
+  <Footer/>
 </template>
 
 <style scoped>
-.movie-detail {
-  padding: 20px;
-  color: white;
-  background-color: #141414; /* Dark background for the detail view */
-}
-
-.movie-title {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #e50914; /* Netflix red */
-}
-
-.movie-overview {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.movie-release-date {
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-.movie-site {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  background-color: #e50914; /* Netflix red */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.movie-site:hover {
-  background-color: #f01212; /* Darker red on hover */
-}
-
-.movie-poster {
-  width: 25%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.trailers-title {
-  font-size: 2rem;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.trailers-container {
+.details-view {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 15px; /* Space between trailer tiles */
+  min-height: 100vh;
+  background-color: #121212;
 }
 
-.trailer-tile {
-  background-color: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.2s;
-  width: 200px; /* Fixed width for trailer tiles */
+button {
+  background-color: #e50914;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-.trailer-tile:hover {
-  transform: scale(1.05); /* Scale effect on hover */
+button:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
 }
 
-.trailer-thumbnail {
-  width: 100%; /* Full width of the tile */
-  height: auto; /* Maintain aspect ratio */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(98, 0, 234, 0.6);
 }
-</style><div class="."></div>
+
+button:active {
+  background-color: #f40612;
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+</style>

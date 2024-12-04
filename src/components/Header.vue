@@ -2,120 +2,58 @@
 
 </script>
 
-<template>
-      <header> 
+<template> 
+    <div class="header"> 
         <h1>NotFlix</h1>
-    </header>
-
-    <nav>
-        <button>Log In</button>
-        <button>Register</button>
-    </nav>
+    </div>
+    <div class="buttons">
+        <RouterLink to="/register" class="button">Register</RouterLink>
+        <RouterLink to="/login" class="button">Login</RouterLink>
+    </div>
 </template>
 
-
-<script setup>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+<style scoped>
+.header {
+  background-color: black; 
+  padding: 20px;  
+  width: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 1000;  
 }
 
-body {
-    background-color: #141414;
-    color: #fff;
-    line-height: 1.6;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; 
+  padding: 20px;
+  margin-top: 80px; 
 }
 
-header {
-    background-color: #e50914;
-    padding: 10px 20px;
-    text-align: center;
+.button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #e50914; 
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-header h1 {
-    font-size: 3rem;
-    color: #000000;
+.button:hover {
+  background-color: #f40612; 
 }
 
-nav {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px 20px;
+h1 {
+  color: white; 
+  background-color: black;
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem; 
+  font-style: italic;
+  text-align: center;
+  margin: 0;
 }
-
-nav button {
-    background-color: #e50914;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-nav button:hover {
-    background-color: #f40612;
-}
-
-
-.hero {
-    text-align: center;
-    padding: 20px 20px;
-    background-image: url('hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    margin-top: -20px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
-.features {
-    padding: 20px;
-    background-color: #222;
-    text-align: center;
-}
-
-.features h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.anime {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.anime img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.anime img:hover {
-    transform: scale(1.05);
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #141414;
-    color: #777;
-}
-
-footer p {
-    font-size: 0.9rem;
-    
-}
-</script>
+</style>

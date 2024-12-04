@@ -1,4 +1,5 @@
 <script setup>
+import Header from '../components/Header.vue';
 import { RouterLink, useRouter } from 'vue-router';
 import { ref } from 'vue';
 
@@ -6,7 +7,7 @@ const router = useRouter();
 const password = ref('');
 
 const handleLogin = () => {
-  if (password.value === "iloveyou") {
+  if (password.value === "movielover") {
     router.push("/movies");
   } else {
     alert("Invalid Password");
@@ -25,7 +26,7 @@ const handleLogin = () => {
         <h2>Login to Your Account</h2>
         <form @submit.prevent="handleLogin">
           <input type="email" placeholder="Email" class="input-field" required />
-          <input v-model:="password" type="password" placeholder="Password" class="input-field" required />
+          <input v-model="password" type="password" placeholder="Password" class="input-field" required />
           <button type="submit" class="button login">Login</button>
         </form>
       </div>
@@ -35,9 +36,7 @@ const handleLogin = () => {
 
 <style scoped>
 .hero {
-  background-image: url('https://source.unsplash.com/random/1920x1080/?movie');
-  /* Replace with your desired background */
-  background-size: cover;
+  background-color: black;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -55,7 +54,6 @@ const handleLogin = () => {
   justify-content: center;
   color: white;
   padding: 20px;
-  /* Added padding for better spacing */
 }
 
 .navbar {
@@ -85,7 +83,6 @@ const handleLogin = () => {
 .form-container {
   text-align: center;
   margin-top: 50px;
-  /* Adjusts spacing from the top */
 }
 
 .form-container h2 {
@@ -95,20 +92,16 @@ const handleLogin = () => {
 
 .input-field {
   padding: 15px;
-  /* Increased padding for better touch targets */
   width: 300px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  /* Added a border */
   margin-bottom: 15px;
   transition: border-color 0.3s;
 }
 
 .input-field:focus {
   border-color: #e50914;
-  /* Change border color on focus */
   outline: none;
-  /* Remove default outline */
 }
 
 .login {
@@ -120,24 +113,20 @@ const handleLogin = () => {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  /* Added transform for hover effect */
 }
 
 .login:hover {
   background-color: #f40612;
   transform: scale(1.05);
-  /* Slightly scale up on hover */
 }
 
 @media (max-width: 600px) {
   .input-field {
     width: 90%;
-    /* Make input fields responsive */
   }
 
   .navbar h1 {
     font-size: 1.5rem;
-    /* Reduce font size on smaller screens */
   }
 }
 </style>
